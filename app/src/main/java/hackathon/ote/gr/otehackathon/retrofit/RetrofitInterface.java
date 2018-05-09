@@ -25,7 +25,7 @@ import rx.Observable;
 
 public interface RetrofitInterface {
 
-    @Headers("X-AUTH-TOKEN: test")
+
     @GET("/startCase")
     Observable<CaseObj> startCase(
 

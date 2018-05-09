@@ -13,6 +13,9 @@ package hackathon.ote.gr.otehackathon.retrofit;
         import java.util.ArrayList;
         import java.util.HashMap;
         import java.util.Random;
+
+        import hackathon.ote.gr.otehackathon.objects.CaseObj;
+        import hackathon.ote.gr.otehackathon.utils.ServiceGenerator;
         import okhttp3.MediaType;
         import okhttp3.MultipartBody;
         import okhttp3.RequestBody;
@@ -26,14 +29,14 @@ package hackathon.ote.gr.otehackathon.retrofit;
  * Created by elias on 04-Feb-17.
  */
 
-public class retrofitManager {
+public class RetrofitManager {
     private Observer observer;
 
 
-    public retrofitManager(Observer observer) {
+    public RetrofitManager(Observer observer) {
         this.observer = observer;
     }
-
+    private static final String API_URL = "https://localhost/";
 
     private void subscribeObservable(Observable call) {
         call.subscribeOn(Schedulers.newThread()) // Create a new Thread
@@ -41,7 +44,15 @@ public class retrofitManager {
                 .subscribe(observer);
     }
 
-
+    public void startCase() {
+        RetrofitInterface client = ServiceGenerator.createServiceRxAndroid(RetrofitInterface.class, API_URL);
+     /*   HashMap<String,String> map=new HashMap<>();
+        map.put("token",token);
+        map.put("type",type);
+        map.put("user_id",user_id);*/
+        Observable<CaseObj> call = client.startCase();
+        subscribeObservable(call);
+    }
 
 }
 
