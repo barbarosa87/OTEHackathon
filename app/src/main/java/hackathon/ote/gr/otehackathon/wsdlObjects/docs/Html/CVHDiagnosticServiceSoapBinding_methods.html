@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>CVHDiagnosticServiceSoapBinding methods</title>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/github.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel='stylesheet' type='text/css' href='../Styles/Blueprint_Styles/Style.css' />
+    <script src='../Scripts/Blueprint_Scripts/Script.js' type='text/javascript'></script>
+    <style type="text/css">
+        .syntaxhighlighter {
+            overflow-y: hidden !important;
+            overflow-x: auto !important;
+        }
+    </style>
+</head>
+<body>
+        <h2 id="getTopology">getTopology</h2>
+        <p>
+            
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+CVHtopology res = service.getTopology(param0,param1);
+//in res variable you have a value returned from your web service
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        CVHtopology res = (CVHtopology)result.Result;
+        //in res variable you have a value returned from your web service
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.getTopologyAsync (param0,param1);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="resumeCase">resumeCase</h2>
+        <p>
+            
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+CVHresumeCase param0 = new CVHresumeCase();
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+CVHsessionState res = service.resumeCase(param0);
+//in res variable you have a value returned from your web service
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+CVHresumeCase param0 = new CVHresumeCase();
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        CVHsessionState res = (CVHsessionState)result.Result;
+        //in res variable you have a value returned from your web service
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.resumeCaseAsync (param0);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="closeCase">closeCase</h2>
+        <p>
+            
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+CVHcloseCase param0 = new CVHcloseCase();
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.closeCase(param0);
+//here you can put the code you want to run when your web service operation is finished
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+CVHcloseCase param0 = new CVHcloseCase();
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        //here you can put the code you want to run when your web service operation is finished
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.closeCaseAsync (param0);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="getForms">getForms</h2>
+        <p>
+            
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+CVHformPage res = service.getForms(param0,param1);
+//in res variable you have a value returned from your web service
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        CVHformPage res = (CVHformPage)result.Result;
+        //in res variable you have a value returned from your web service
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.getFormsAsync (param0,param1);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="getEvents">getEvents</h2>
+        <p>
+            
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+CVHevents res = service.getEvents(param0,param1);
+//in res variable you have a value returned from your web service
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        CVHevents res = (CVHevents)result.Result;
+        //in res variable you have a value returned from your web service
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.getEventsAsync (param0,param1);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="submitForms">submitForms</h2>
+        <p>
+            
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+CVHsubmitForms param0 = new CVHsubmitForms();
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+CVHsessionState res = service.submitForms(param0);
+//in res variable you have a value returned from your web service
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+CVHsubmitForms param0 = new CVHsubmitForms();
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        CVHsessionState res = (CVHsessionState)result.Result;
+        //in res variable you have a value returned from your web service
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.submitFormsAsync (param0);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="getProcessMenu">getProcessMenu</h2>
+        <p>
+            
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+CVHprocessMenuForm res = service.getProcessMenu(param0,param1);
+//in res variable you have a value returned from your web service
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        CVHprocessMenuForm res = (CVHprocessMenuForm)result.Result;
+        //in res variable you have a value returned from your web service
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.getProcessMenuAsync (param0,param1);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="getAppForm">getAppForm</h2>
+        <p>
+            
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+CVHappForm res = service.getAppForm(param0,param1);
+//in res variable you have a value returned from your web service
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        CVHappForm res = (CVHappForm)result.Result;
+        //in res variable you have a value returned from your web service
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.getAppFormAsync (param0,param1);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="closeSession">closeSession</h2>
+        <p>
+            This method is available in Premium account only. To test if generated classes work correctly with your webservice, please use different method. Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account.
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+String param0 = ...;//initialization code
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.closeSession(param0);
+//here you can put the code you want to run when your web service operation is finished
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+String param0 = ...;//initialization code
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        //here you can put the code you want to run when your web service operation is finished
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.closeSessionAsync (param0);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="rollbackProcess">rollbackProcess</h2>
+        <p>
+            This method is available in Premium account only. To test if generated classes work correctly with your webservice, please use different method. Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account.
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+String param2 = ...;//initialization code
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+String res = service.rollbackProcess(param0,param1,param2);
+//in res variable you have a value returned from your web service
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+String param2 = ...;//initialization code
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        String res = (String)result.Result;
+        //in res variable you have a value returned from your web service
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.rollbackProcessAsync (param0,param1,param2);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="submitFeedback">submitFeedback</h2>
+        <p>
+            This method is available in Premium account only. To test if generated classes work correctly with your webservice, please use different method. Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account.
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+String param2 = ...;//initialization code
+String param3 = ...;//initialization code
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.submitFeedback(param0,param1,param2,param3);
+//here you can put the code you want to run when your web service operation is finished
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+String param2 = ...;//initialization code
+String param3 = ...;//initialization code
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        //here you can put the code you want to run when your web service operation is finished
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.submitFeedbackAsync (param0,param1,param2,param3);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="getSessionState">getSessionState</h2>
+        <p>
+            This method is available in Premium account only. To test if generated classes work correctly with your webservice, please use different method. Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account.
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+String param0 = ...;//initialization code
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+String res = service.getSessionState(param0);
+//in res variable you have a value returned from your web service
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+String param0 = ...;//initialization code
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        String res = (String)result.Result;
+        //in res variable you have a value returned from your web service
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.getSessionStateAsync (param0);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="startProcess">startProcess</h2>
+        <p>
+            This method is available in Premium account only. To test if generated classes work correctly with your webservice, please use different method. Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account.
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+String param0 = ...;//initialization code
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+String res = service.startProcess(param0);
+//in res variable you have a value returned from your web service
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+String param0 = ...;//initialization code
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        String res = (String)result.Result;
+        //in res variable you have a value returned from your web service
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.startProcessAsync (param0);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="setLocale">setLocale</h2>
+        <p>
+            This method is available in Premium account only. To test if generated classes work correctly with your webservice, please use different method. Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account.
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.setLocale(param0,param1);
+//here you can put the code you want to run when your web service operation is finished
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+String param0 = ...;//initialization code
+String param1 = ...;//initialization code
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        //here you can put the code you want to run when your web service operation is finished
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.setLocaleAsync (param0,param1);
+                </code>
+</pre>
+        <br />
+        <br />
+        <h2 id="startCase">startCase</h2>
+        <p>
+            This method is available in Premium account only. To test if generated classes work correctly with your webservice, please use different method. Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account.
+        </p>
+        <h4>Synchronous operation</h4>
+        <pre>
+        <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+
+String param0 = ...;//initialization code
+
+            
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding("https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+String res = service.startCase(param0);
+//in res variable you have a value returned from your web service
+            </code>
+</pre>
+            <p>To invoke a synchronous method, you need to do this in separate thread (for example by using <a href="http://developer.android.com/reference/android/os/AsyncTask.html">AsyncTask</a> class)</p>
+            <h4>Asynchronous operation</h4>
+            <pre>
+            <code class="java">
+import hackathon.ote.gr.otehackathon.wsdlObjects;
+...
+String param0 = ...;//initialization code
+
+CVHDiagnosticServiceSoapBinding service = new CVHDiagnosticServiceSoapBinding(new IServiceEvents() {
+    @Override
+    public void Starting() {
+    }
+    @Override
+    public void Completed(OperationResult result) {
+        String res = (String)result.Result;
+        //in res variable you have a value returned from your web service
+    }
+},"https://solvrs1.central-domain.root.ote.gr/helpdesk/webservice/diag");
+service.startCaseAsync (param0);
+                </code>
+</pre>
+        <br />
+        <br />
+</body>
+</html>
+
