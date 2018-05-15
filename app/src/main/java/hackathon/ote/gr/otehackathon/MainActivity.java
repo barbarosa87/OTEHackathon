@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import hackathon.ote.gr.otehackathon.activities.SymtpmsListActivity;
+import hackathon.ote.gr.otehackathon.helper.helper;
 import hackathon.ote.gr.otehackathon.objects.CaseObj;
 import hackathon.ote.gr.otehackathon.retrofit.RetrofitManager;
 import rx.Observer;
@@ -90,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
         Context context = bouncingTextContainer.getContext();
         final FrameLayout textViewHolder = new FrameLayout(context);
         final TextView textView = new TextView(context);
-        final TextView helper = new TextView(context);
-        textViewHolder.addView(helper, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        final TextView helperText = new TextView(context);
+        textViewHolder.addView(helperText, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         textViewHolder.addView(textView);
 
         final int length = vls.length();
@@ -101,13 +103,13 @@ public class MainActivity extends AppCompatActivity {
         helperString.setSpan(new ForegroundColorSpan(Color.TRANSPARENT), 1, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         helperString.setSpan(new ForegroundColorSpan(firstLetterColor), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         textView.setTextSize(size);
-        helper.setTextSize(0);
-        helper.setText(helperString);
-        setupCreatedViews(bouncingTextContainer, textViewHolder, textView, helper);
+        helperText.setTextSize(0);
+        helperText.setText(helperString);
+        setupCreatedViews(bouncingTextContainer, textViewHolder, textView, helperText);
 
         final int intSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, size, getResources().getDisplayMetrics());
         final int stepDuration = duration / length;
-        ObjectAnimator anim = ObjectAnimator.ofFloat(helper, "textSize", 0, size).setDuration(stepDuration);
+        ObjectAnimator anim = ObjectAnimator.ofFloat(helperText, "textSize", 0, size).setDuration(stepDuration);
         anim.setRepeatCount(length);
         anim.addListener(new Animator.AnimatorListener() {
             int at = 1;
@@ -118,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
+                helper.startActivity(getApplicationContext(), SymtpmsListActivity.class,null);
             }
 
             @Override
@@ -130,13 +133,13 @@ public class MainActivity extends AppCompatActivity {
                 textViewString.setSpan(new ForegroundColorSpan(firstLetterColor), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 textViewString.setSpan(new ForegroundColorSpan(Color.TRANSPARENT), at, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 textView.setText(textViewString);
-                helper.setTextSize(0);
+                helperText.setTextSize(0);
                 SpannableString helperString = new SpannableString(vls);
                 helperString.setSpan(new ForegroundColorSpan(Color.TRANSPARENT), 0, at, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 helperString.setSpan(new TextAppearanceSpan(null, 10, intSize, null, null), 0, at, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 if (at != length)
                     helperString.setSpan(new ForegroundColorSpan(Color.TRANSPARENT), at + 1, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                helper.setText(helperString);
+                helperText.setText(helperString);
                 at++;
             }
         });

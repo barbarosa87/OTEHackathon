@@ -11,8 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 
 public class helper {
 
-    public static void startActivity(Context context, AppCompatActivity activity, Bundle bundle){
-        Intent intent=new Intent(context,activity.getClass());
+    public static void startActivity(Context context, Class activity, Bundle bundle){
+        Intent intent=new Intent(context,activity);
         intent.putExtra("bundle",bundle);
         context.startActivity(intent);
     }
