@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.logoImage)
     ImageView logoImage;
+    private Application application;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         //startSession();
-
+        application = (Application) getApplication();
 
         RotateAnimation rotate = new RotateAnimation(
                 0, 360,
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         new RetrofitManager(caseObjObserver).startCase();*/
 
-        Animator anim = bouncingStringIntoViewGroup((ViewGroup) findViewById(R.id.bounceView), Color.WHITE, 40, "COSMOTE", 3000);
+        Animator anim = bouncingStringIntoViewGroup((ViewGroup) findViewById(R.id.bounceView), Color.WHITE, 40, "C O S M O T E", 3000);
         //here you can add a another listener to anim if you want (a listener could manipulate the views by set ids).
         anim.start();
 
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                helper.startActivity(getApplicationContext(), SymtpmsListActivity.class,null);
+                helper.startActivity(getApplicationContext(), SymtpmsListActivity.class, null);
             }
 
             @Override

@@ -37,6 +37,7 @@ public class RetrofitManager {
         this.observer = observer;
     }
     private static final String API_URL = "https://solvatiouat.ote.gr/WebServiceProject/rest/startCase";
+    private static final String API_URL_DEBUG = "https://solvatiouat.ote.gr/WebServiceProject/rest/startCase";
 
     private void subscribeObservable(Observable call) {
         call.subscribeOn(Schedulers.newThread()) // Create a new Thread
