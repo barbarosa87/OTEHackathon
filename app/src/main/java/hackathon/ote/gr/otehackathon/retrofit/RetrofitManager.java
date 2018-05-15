@@ -36,7 +36,7 @@ public class RetrofitManager {
     public RetrofitManager(Observer observer) {
         this.observer = observer;
     }
-    private static final String API_URL = "https://localhost/";
+    private static final String API_URL = "https://solvatiouat.ote.gr/WebServiceProject/rest/startCase";
 
     private void subscribeObservable(Observable call) {
         call.subscribeOn(Schedulers.newThread()) // Create a new Thread
@@ -52,6 +52,8 @@ public class RetrofitManager {
         map.put("user_id",user_id);*/
         Observable<CaseObj> call = client.startCase();
         subscribeObservable(call);
+
+
     }
 
 }
