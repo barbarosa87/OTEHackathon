@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">OTEHackathon</string>
+    <string name="title_activity_symptoms_list">SymptomsListActivity</string>
+    <string name="title_activity_symtpms_list">SymtpmsListActivity</string>
 </resources>
