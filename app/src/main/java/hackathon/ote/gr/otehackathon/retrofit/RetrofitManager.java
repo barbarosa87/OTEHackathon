@@ -14,7 +14,9 @@ package hackathon.ote.gr.otehackathon.retrofit;
         import java.util.HashMap;
         import java.util.Random;
 
+        import hackathon.ote.gr.otehackathon.helper.HelperClass;
         import hackathon.ote.gr.otehackathon.objects.CaseObj;
+        import hackathon.ote.gr.otehackathon.objects.SessionStateObj;
         import hackathon.ote.gr.otehackathon.utils.ServiceGenerator;
         import okhttp3.MediaType;
         import okhttp3.MultipartBody;
@@ -36,8 +38,8 @@ public class RetrofitManager {
     public RetrofitManager(Observer observer) {
         this.observer = observer;
     }
-    private static final String API_URL = "https://solvatiouat.ote.gr/WebServiceProject/rest/startCase";
-    private static final String API_URL_DEBUG = "https://solvatiouat.ote.gr/WebServiceProject/rest/startCase";
+   // private static final String API_URL = "https://solvatiouat.ote.gr/WebServiceProject/rest/startCase";
+    //private static final String API_URL = "http://192.168.1.15:8080/WebServiceProject/";
 
     private void subscribeObservable(Observable call) {
         call.subscribeOn(Schedulers.newThread()) // Create a new Thread
@@ -45,13 +47,25 @@ public class RetrofitManager {
                 .subscribe(observer);
     }
 
-    public void startCase() {
-        RetrofitInterface client = ServiceGenerator.createServiceRxAndroid(RetrofitInterface.class, API_URL);
+    public void startCase(String cli) {
+        RetrofitInterface client = ServiceGenerator.createServiceRxAndroid(RetrofitInterface.class, HelperClass.getApiUrl());
      /*   HashMap<String,String> map=new HashMap<>();
         map.put("token",token);
         map.put("type",type);
         map.put("user_id",user_id);*/
-        Observable<CaseObj> call = client.startCase();
+        Observable<CaseObj> call = client.startCase(cli,"TELEPHONY");
+        subscribeObservable(call);
+
+
+    }
+
+    public void getProcessState(String token) {
+        RetrofitInterface client = ServiceGenerator.createServiceRxAndroid(RetrofitInterface.class, HelperClass.getApiUrl());
+     /*   HashMap<String,String> map=new HashMap<>();
+        map.put("token",token);
+        map.put("type",type);
+        map.put("user_id",user_id);*/
+        Observable<SessionStateObj> call = client.getProcessState(token);
         subscribeObservable(call);
 
 

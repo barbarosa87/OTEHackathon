@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import hackathon.ote.gr.otehackathon.objects.CaseObj;
+import hackathon.ote.gr.otehackathon.objects.SessionStateObj;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.Field;
@@ -26,11 +27,15 @@ import rx.Observable;
 public interface RetrofitInterface {
 
 
-    @GET("/startCase")
+    @GET("/WebServiceProject/startCase")
     Observable<CaseObj> startCase(
-
+            @Query("CLI") String cli,
+            @Query("type") String type
     );
 
-
+    @GET("/WebServiceProject/getProcessState")
+    Observable<SessionStateObj> getProcessState(
+            @Query("token") String token
+    );
 
 }

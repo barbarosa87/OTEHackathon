@@ -24,8 +24,11 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import hackathon.ote.gr.otehackathon.activities.SymtpmsListActivity;
-import hackathon.ote.gr.otehackathon.helper.helper;
+import hackathon.ote.gr.otehackathon.enumerators.ProcessStates;
+import hackathon.ote.gr.otehackathon.helper.HelperClass;
 import hackathon.ote.gr.otehackathon.objects.CaseObj;
+import hackathon.ote.gr.otehackathon.objects.ProcessStatesObj;
+import hackathon.ote.gr.otehackathon.objects.SessionStateObj;
 import hackathon.ote.gr.otehackathon.retrofit.RetrofitManager;
 import rx.Observer;
 
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.logoImage)
     ImageView logoImage;
     private Application application;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +65,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void startSession() {
 
-       /* Observer<CaseObj> caseObjObserver = new Observer<CaseObj>() {
+
+        Observer<CaseObj> caseObjObserver = new Observer<CaseObj>() {
             @Override
             public void onCompleted() {
-                Animator anim = bouncingStringIntoViewGroup((ViewGroup) findViewById(R.id.bounceView), Color.RED, 30, "A bouncy string.", 3000);
+                Animator anim = bouncingStringIntoViewGroup((ViewGroup) findViewById(R.id.bounceView), Color.WHITE, 40, "C O S M O T E", 3000);
                 //here you can add a another listener to anim if you want (a listener could manipulate the views by set ids).
                 anim.start();
+
             }
 
             @Override
@@ -76,16 +82,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNext(CaseObj caseObj) {
+                application.setToken(caseObj.getToken());
                 Toast.makeText(MainActivity.this,
                         "Case created:" + caseObj.getCaseId(), Toast.LENGTH_LONG).show();
+
             }
         };
 
-        new RetrofitManager(caseObjObserver).startCase();*/
+        new RetrofitManager(caseObjObserver).startCase(HelperClass.getDemoCLI());
 
-        Animator anim = bouncingStringIntoViewGroup((ViewGroup) findViewById(R.id.bounceView), Color.WHITE, 40, "C O S M O T E", 3000);
-        //here you can add a another listener to anim if you want (a listener could manipulate the views by set ids).
-        anim.start();
 
     }
 
@@ -121,7 +126,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                helper.startActivity(getApplicationContext(), SymtpmsListActivity.class, null);
+
+                getSessionState();
+
+
             }
 
             @Override
@@ -151,5 +159,37 @@ public class MainActivity extends AppCompatActivity {
         containerForAnimatedText.addView(subcontainer, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         //here you can set colors, ids, padding etc...
+    }
+
+
+    private void getSessionState() {
+        Observer<SessionStateObj> sessionStateObjObserver = new Observer<SessionStateObj>() {
+            @Override
+            public void onCompleted() {
+
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                e.printStackTrace();
+
+            }
+
+            @Override
+            public void onNext(SessionStateObj sessionStateObj) {
+                for (ProcessStatesObj processStates : sessionStateObj.getProcessStates()) {
+                    if (processStates.getProcessDefinitionId().equalsIgnoreCase("Main")) {
+                        if (processStates.getState().getValue().equals(ProcessStates.idle.toString())) {
+                            HelperClass.startActivity(getApplicationContext(), SymtpmsListActivity.class, null);
+                        } else {
+                            getSessionState();
+                        }
+                    }
+                }
+            }
+        };
+
+        new RetrofitManager(sessionStateObjObserver).getProcessState(application.getToken());
     }
 }

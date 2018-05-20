@@ -41,7 +41,7 @@ public class ServiceGenerator {
         //      client.setReadTimeout(30, TimeUnit.SECONDS);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl).client(clientNoLog)
+                .baseUrl(baseUrl).client(clientLog)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
