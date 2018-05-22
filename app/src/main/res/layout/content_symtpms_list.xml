@@ -8,4 +8,9 @@
     tools:context="hackathon.ote.gr.otehackathon.activities.SymtpmsListActivity"
     tools:showIn="@layout/activity_symtpms_list">
 
+<android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:id="@+id/symptomsRecycler"
+    android:layout_height="match_parent"/>
+
 </android.support.constraint.ConstraintLayout>

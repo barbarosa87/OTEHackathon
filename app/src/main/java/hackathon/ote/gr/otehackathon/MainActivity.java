@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import hackathon.ote.gr.otehackathon.activities.SymtpmsListActivity;
@@ -29,6 +31,7 @@ import hackathon.ote.gr.otehackathon.helper.HelperClass;
 import hackathon.ote.gr.otehackathon.objects.CaseObj;
 import hackathon.ote.gr.otehackathon.objects.ProcessStatesObj;
 import hackathon.ote.gr.otehackathon.objects.SessionStateObj;
+import hackathon.ote.gr.otehackathon.objects.SymptomItemObj;
 import hackathon.ote.gr.otehackathon.retrofit.RetrofitManager;
 import rx.Observer;
 
@@ -56,10 +59,31 @@ public class MainActivity extends AppCompatActivity {
         rotate.setDuration(800);
         rotate.setRepeatCount(Animation.INFINITE);
         logoImage.startAnimation(rotate);
-
-
         startSession();
 
+    }
+
+    private void getSymptoms() {
+        Observer<ArrayList<SymptomItemObj>> symptomsObjObjerver = new Observer<ArrayList<SymptomItemObj>>() {
+            @Override
+            public void onCompleted() {
+                HelperClass.startActivity(getApplicationContext(), SymtpmsListActivity.class, null);
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                e.printStackTrace();
+
+            }
+
+            @Override
+            public void onNext(ArrayList<SymptomItemObj> symptomObjArrayList) {
+                application.setSymptomItemObjArrayList(symptomObjArrayList);
+            }
+        };
+
+        new RetrofitManager(symptomsObjObjerver).getSymptoms(application.getToken());
 
     }
 
@@ -181,7 +205,9 @@ public class MainActivity extends AppCompatActivity {
                 for (ProcessStatesObj processStates : sessionStateObj.getProcessStates()) {
                     if (processStates.getProcessDefinitionId().equalsIgnoreCase("Main")) {
                         if (processStates.getState().getValue().equals(ProcessStates.idle.toString())) {
-                            HelperClass.startActivity(getApplicationContext(), SymtpmsListActivity.class, null);
+
+                            getSymptoms();
+
                         } else {
                             getSessionState();
                         }

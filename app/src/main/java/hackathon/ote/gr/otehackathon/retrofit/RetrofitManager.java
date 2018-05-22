@@ -17,6 +17,8 @@ package hackathon.ote.gr.otehackathon.retrofit;
         import hackathon.ote.gr.otehackathon.helper.HelperClass;
         import hackathon.ote.gr.otehackathon.objects.CaseObj;
         import hackathon.ote.gr.otehackathon.objects.SessionStateObj;
+        import hackathon.ote.gr.otehackathon.objects.SymptomItemObj;
+        import hackathon.ote.gr.otehackathon.objects.SymptomObj;
         import hackathon.ote.gr.otehackathon.utils.ServiceGenerator;
         import okhttp3.MediaType;
         import okhttp3.MultipartBody;
@@ -66,6 +68,18 @@ public class RetrofitManager {
         map.put("type",type);
         map.put("user_id",user_id);*/
         Observable<SessionStateObj> call = client.getProcessState(token);
+        subscribeObservable(call);
+
+
+    }
+
+    public void getSymptoms(String token) {
+        RetrofitInterface client = ServiceGenerator.createServiceRxAndroid(RetrofitInterface.class, HelperClass.getApiUrl());
+     /*   HashMap<String,String> map=new HashMap<>();
+        map.put("token",token);
+        map.put("type",type);
+        map.put("user_id",user_id);*/
+        Observable<ArrayList<SymptomItemObj>> call = client.getSymptoms(token);
         subscribeObservable(call);
 
 
