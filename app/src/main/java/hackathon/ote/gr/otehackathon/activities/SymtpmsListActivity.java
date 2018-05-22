@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.OvershootInterpolator;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ import hackathon.ote.gr.otehackathon.objects.SessionStateObj;
 import hackathon.ote.gr.otehackathon.objects.SymptomItemObj;
 import hackathon.ote.gr.otehackathon.objects.SymptomObj;
 import hackathon.ote.gr.otehackathon.retrofit.RetrofitManager;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 import rx.Observer;
 
 public class SymtpmsListActivity extends AppCompatActivity {
@@ -64,8 +66,19 @@ public class SymtpmsListActivity extends AppCompatActivity {
         symptomsRecycler.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        SymptomsAdapter mAdapter = new SymptomsAdapter(application.getSymptomItemObjArrayList(), getApplicationContext());
+        SymptomsAdapter mAdapter = new SymptomsAdapter(new ArrayList<SymptomItemObj>(), getApplicationContext());
         symptomsRecycler.setAdapter(mAdapter);
+
+        SlideInUpAnimator animator = new SlideInUpAnimator(new OvershootInterpolator(1f));
+
+        symptomsRecycler.setItemAnimator(animator);
+
+        for (SymptomItemObj symptomItemObj:application.getSymptomItemObjArrayList()){
+            if (symptomItemObj.getVisible()==true){
+                mAdapter.insert(symptomItemObj);
+            }
+        }
+        //application.getSymptomItemObjArrayList()
     }
 
 

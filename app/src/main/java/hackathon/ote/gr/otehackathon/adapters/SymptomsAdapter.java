@@ -28,7 +28,7 @@ public class SymptomsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public int getItemViewType(int position) {
 
-        if (symptomItemObjArrayList.get(position).getEnabled() == false) {
+        if (symptomItemObjArrayList.get(position).getProcessDefinitionId() == null) {
             return 0;
         } else {
 
@@ -53,6 +53,23 @@ public class SymptomsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public SymptomsAdapter(ArrayList<SymptomItemObj> symptomItemObjArrayList, Context context) {
         this.symptomItemObjArrayList = symptomItemObjArrayList;
         this.context = context;
+    }
+
+
+    public void insert(SymptomItemObj symptomItemObj) {
+     /*   for (int i = 0; i < tournamentObjArrayList.size(); i++) {
+            if (tournamentObjArrayList.get(i).getId() == tour.getId()) {
+                tournamentObjArrayList.set(i, tour);
+                notifyItemChanged(i);
+                return;
+            }
+        }*/
+        // int prevSize = tournamentObjArrayList.size();
+
+        symptomItemObjArrayList.add(symptomItemObj);
+        notifyItemInserted(symptomItemObjArrayList.indexOf(symptomItemObj));
+        //notifyItemInserted(position);
+        //notifyItemRangeChanged(position,tournamentObjArrayList.size()-prevSize);
     }
 
 

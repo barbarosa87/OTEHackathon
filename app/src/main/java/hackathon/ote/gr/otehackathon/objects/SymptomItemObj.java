@@ -71,4 +71,20 @@ public class SymptomItemObj implements Serializable{
     public void setIcon(String icon) {
         this.icon = icon;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SymptomItemObj that = (SymptomItemObj) o;
+
+        return caption.equals(that.caption);
+    }
+
+    @Override
+    public int hashCode() {
+        return caption.hashCode();
+    }
 }

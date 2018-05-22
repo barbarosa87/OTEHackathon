@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
             public void onNext(SessionStateObj sessionStateObj) {
                 for (ProcessStatesObj processStates : sessionStateObj.getProcessStates()) {
                     if (processStates.getProcessDefinitionId().equalsIgnoreCase("Main")) {
-                        if (processStates.getState().getValue().equals(ProcessStates.idle.toString())) {
+                        if (processStates.getState().getValue().equals(ProcessStates.terminated.toString())) {
 
                             getSymptoms();
 
