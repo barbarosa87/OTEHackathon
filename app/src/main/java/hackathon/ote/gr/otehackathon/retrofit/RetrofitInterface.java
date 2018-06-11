@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import hackathon.ote.gr.otehackathon.objects.CaseObj;
+import hackathon.ote.gr.otehackathon.objects.ProcessStatesObj;
 import hackathon.ote.gr.otehackathon.objects.SessionStateObj;
 import hackathon.ote.gr.otehackathon.objects.SymptomItemObj;
 import hackathon.ote.gr.otehackathon.objects.SymptomObj;
@@ -43,6 +44,18 @@ public interface RetrofitInterface {
     @GET("/WebServiceProject/getSymptoms")
     Observable<ArrayList<SymptomItemObj>> getSymptoms(
             @Query("token") String token
+    );
+
+    @GET("/WebServiceProject/startProcess")
+    Observable<ProcessStatesObj> startProcess(
+            @Query("token") String token,
+            @Query("ProcessID") String ProcessID
+    );
+
+    @GET("/WebServiceProject/getForms")
+    Observable<Forms> getForms(
+            @Query("token") String token,
+            @Query("ProcessID") String ProcessID
     );
 
 }
