@@ -2,4 +2,5 @@
     <string name="app_name">OTEHackathon</string>
     <string name="title_activity_symptoms_list">SymptomsListActivity</string>
     <string name="title_activity_symtpms_list">Symptoms</string>
+    <string name="add_product_identifier">Identifier</string>
 </resources>

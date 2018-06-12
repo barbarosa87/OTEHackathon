@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -25,6 +26,9 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import eltos.simpledialogfragment.SimpleDialog;
+import eltos.simpledialogfragment.form.Input;
+import eltos.simpledialogfragment.form.SimpleFormDialog;
 import hackathon.ote.gr.otehackathon.activities.SymtpmsListActivity;
 import hackathon.ote.gr.otehackathon.enumerators.ProcessStates;
 import hackathon.ote.gr.otehackathon.helper.HelperClass;
@@ -35,7 +39,7 @@ import hackathon.ote.gr.otehackathon.objects.SymptomItemObj;
 import hackathon.ote.gr.otehackathon.retrofit.RetrofitManager;
 import rx.Observer;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements SimpleDialog.OnDialogResultListener{
 
     @BindView(R.id.logoImage)
     ImageView logoImage;
@@ -43,23 +47,42 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
+    public boolean onResult(@NonNull String dialogTag, int which, @NonNull Bundle extras) {
+        if (which == BUTTON_POSITIVE ){
+
+            RotateAnimation rotate = new RotateAnimation(
+                    0, 360,
+                    Animation.RELATIVE_TO_SELF, 0.5f,
+                    Animation.RELATIVE_TO_SELF, 0.5f
+            );
+            rotate.setInterpolator(new LinearInterpolator());
+            rotate.setDuration(800);
+            rotate.setRepeatCount(Animation.INFINITE);
+            logoImage.startAnimation(rotate);
+            startSession();
+            return true;
+        }
+        // ...
+        return false;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         //startSession();
+
         application = (Application) getApplication();
 
-        RotateAnimation rotate = new RotateAnimation(
-                0, 360,
-                Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f
-        );
-        rotate.setInterpolator(new LinearInterpolator());
-        rotate.setDuration(800);
-        rotate.setRepeatCount(Animation.INFINITE);
-        logoImage.startAnimation(rotate);
-        startSession();
+
+        SimpleFormDialog.build()
+                .title(R.string.add_product_identifier)
+                .fields(
+                        Input.plain("IDENTIFIER").required().max(10).validatePatternAlphanumeric()
+                )
+                .show(this, "IDENTIFIER FORM");
+
 
     }
 
