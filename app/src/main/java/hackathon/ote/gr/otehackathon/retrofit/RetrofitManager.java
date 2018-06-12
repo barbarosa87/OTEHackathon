@@ -95,7 +95,7 @@ public class RetrofitManager {
         map.put("token",token);
         map.put("type",type);
         map.put("user_id",user_id);*/
-        Observable<List<ProcessStatesObj>> call = client.startProcess(token,processID);
+        Observable<ProcessStatesObj> call = client.startProcess(token,processID);
         subscribeObservable(call);
 
     }

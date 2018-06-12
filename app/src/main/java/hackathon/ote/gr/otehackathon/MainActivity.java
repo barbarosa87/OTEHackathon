@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity  implements SimpleDialog.OnD
             public void onNext(SessionStateObj sessionStateObj) {
                 for (ProcessStatesObj processStates : sessionStateObj.getProcessStates()) {
                     if (processStates.getProcessDefinitionId().equalsIgnoreCase("Main")) {
-                        if (processStates.getState().getValue().equals(ProcessStates.terminated.toString())) {
+                        if (processStates.getState().equals(ProcessStates.terminated.toString())) {
 
                             getSymptoms();
 

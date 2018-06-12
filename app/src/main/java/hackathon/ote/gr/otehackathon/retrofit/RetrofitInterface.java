@@ -33,35 +33,35 @@ import rx.Observable;
 public interface RetrofitInterface {
 
 
-    @GET("/WebServiceProject/startCase")
+    @GET("/SolvatioBridge/webresources/startCase")
     Observable<CaseObj> startCase(
             @Query("CLI") String cli,
             @Query("type") String type
     );
 
-    @GET("/WebServiceProject/getProcessState")
+    @GET("/SolvatioBridge/webresources/processState")
     Observable<SessionStateObj> getProcessState(
             @Query("token") String token
     );
 
-    @GET("/WebServiceProject/getSymptoms")
+    @GET("/SolvatioBridge/webresources/symptoms")
     Observable<ArrayList<SymptomItemObj>> getSymptoms(
             @Query("token") String token
     );
 
-    @GET("/WebServiceProject/startProcess")
-    Observable<List<ProcessStatesObj>> startProcess(
+    @GET("/SolvatioBridge/webresources/startProcess")
+    Observable<ProcessStatesObj> startProcess(
             @Query("token") String token,
             @Query("ProcessID") String ProcessID
     );
 
-    @GET("/WebServiceProject/getForms")
+    @GET("/SolvatioBridge/webresources/form")
     Observable<List<FormObj>> getForms(
             @Query("token") String token,
             @Query("ProcessID") String ProcessID
     );
 
-    @GET("/WebServiceProject/getForms")
+    @GET("/SolvatioBridge/webresources/submitforms")
     Observable<List<ProcessStatesObj>> submitForms(
             @Query("token") String token,
             @Query("formID") String formID,

@@ -11,7 +11,7 @@ public class ProcessStatesObj implements Serializable {
     private String numberOfEvents;
     private String processDefinitionId;
     private String processId;
-    private StatesObj state;
+    private String state;
 
     public String getNumberOfEvents() {
         return numberOfEvents;
@@ -37,11 +37,11 @@ public class ProcessStatesObj implements Serializable {
         this.processId = processId;
     }
 
-    public StatesObj getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(StatesObj state) {
+    public void setState(String state) {
         this.state = state;
     }
 }

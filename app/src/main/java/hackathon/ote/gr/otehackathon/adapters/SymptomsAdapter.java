@@ -196,8 +196,8 @@ public class SymptomsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         });
     }
 
-    private void startFormsActivity(String processID) {
-        Observer<List<ProcessStatesObj>> caseObjObserver = new Observer<List<ProcessStatesObj>>() {
+    private void startFormsActivity(final String processID) {
+        Observer<ProcessStatesObj> caseObjObserver = new Observer<ProcessStatesObj>() {
             @Override
             public void onCompleted() {
 
@@ -208,13 +208,13 @@ public class SymptomsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
             @Override
             public void onError(Throwable e) {
-                Toast.makeText(context, "ERROR STARTING PROCESS", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "ERROR STARTING PROCESS "+processID, Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onNext(List<ProcessStatesObj> processStatesObjList) {
+            public void onNext(ProcessStatesObj processStatesObjList) {
                 Toast.makeText(context,
-                        "Process started:" + processStatesObjList.get(0).getProcessId(), Toast.LENGTH_LONG).show();
+                        "Process started:" + processStatesObjList.getProcessId(), Toast.LENGTH_LONG).show();
 
             }
         };
