@@ -4,6 +4,7 @@ package hackathon.ote.gr.otehackathon.adapters;
 import android.animation.Animator;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ThemedSpinnerAdapter;
@@ -23,6 +24,8 @@ import butterknife.ButterKnife;
 import hackathon.ote.gr.otehackathon.Application;
 import hackathon.ote.gr.otehackathon.MainActivity;
 import hackathon.ote.gr.otehackathon.R;
+import hackathon.ote.gr.otehackathon.activities.FormActivity;
+import hackathon.ote.gr.otehackathon.helper.HelperClass;
 import hackathon.ote.gr.otehackathon.objects.CaseObj;
 import hackathon.ote.gr.otehackathon.objects.ProcessStatesObj;
 import hackathon.ote.gr.otehackathon.objects.SymptomItemObj;
@@ -215,6 +218,10 @@ public class SymptomsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             public void onNext(ProcessStatesObj processStatesObjList) {
                 Toast.makeText(context,
                         "Process started:" + processStatesObjList.getProcessId(), Toast.LENGTH_LONG).show();
+                Bundle bundle=new Bundle();
+                bundle.putString("ProcessID",processStatesObjList.getProcessId());
+                bundle.putString("ProcessDefinitionID",processStatesObjList.getProcessDefinitionId());
+                HelperClass.startActivity(context, FormActivity.class,bundle);
 
             }
         };
