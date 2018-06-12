@@ -12,11 +12,14 @@ package hackathon.ote.gr.otehackathon.retrofit;
         import java.io.File;
         import java.util.ArrayList;
         import java.util.HashMap;
+        import java.util.List;
         import java.util.Random;
 
+        import hackathon.ote.gr.otehackathon.enumerators.ProcessStates;
         import hackathon.ote.gr.otehackathon.helper.HelperClass;
         import hackathon.ote.gr.otehackathon.objects.CaseObj;
         import hackathon.ote.gr.otehackathon.objects.FormObj;
+        import hackathon.ote.gr.otehackathon.objects.ProcessStatesObj;
         import hackathon.ote.gr.otehackathon.objects.SessionStateObj;
         import hackathon.ote.gr.otehackathon.objects.SymptomItemObj;
         import hackathon.ote.gr.otehackathon.objects.SymptomObj;
@@ -86,13 +89,36 @@ public class RetrofitManager {
     }
 
 
+    public void startProcess(String token,String processID) {
+        RetrofitInterface client = ServiceGenerator.createServiceRxAndroid(RetrofitInterface.class, HelperClass.getApiUrl());
+     /*   HashMap<String,String> map=new HashMap<>();
+        map.put("token",token);
+        map.put("type",type);
+        map.put("user_id",user_id);*/
+        Observable<List<ProcessStatesObj>> call = client.startProcess(token,processID);
+        subscribeObservable(call);
+
+    }
+
+
     public void getForms(String token,String processID) {
         RetrofitInterface client = ServiceGenerator.createServiceRxAndroid(RetrofitInterface.class, HelperClass.getApiUrl());
      /*   HashMap<String,String> map=new HashMap<>();
         map.put("token",token);
         map.put("type",type);
         map.put("user_id",user_id);*/
-        Observable<FormObj> call = client.getForms(token,processID);
+        Observable<List<FormObj>> call = client.getForms(token,processID);
+        subscribeObservable(call);
+
+    }
+
+    public void submitForms(String token,String formID,String answer) {
+        RetrofitInterface client = ServiceGenerator.createServiceRxAndroid(RetrofitInterface.class, HelperClass.getApiUrl());
+     /*   HashMap<String,String> map=new HashMap<>();
+        map.put("token",token);
+        map.put("type",type);
+        map.put("user_id",user_id);*/
+        Observable<List<ProcessStatesObj>> call = client.submitForms(token,formID,answer);
         subscribeObservable(call);
 
     }

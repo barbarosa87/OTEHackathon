@@ -66,7 +66,7 @@ public class SymtpmsListActivity extends AppCompatActivity {
         symptomsRecycler.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        SymptomsAdapter mAdapter = new SymptomsAdapter(new ArrayList<SymptomItemObj>(), getApplicationContext());
+        SymptomsAdapter mAdapter = new SymptomsAdapter(new ArrayList<SymptomItemObj>(), getApplicationContext(),application.getToken());
         symptomsRecycler.setAdapter(mAdapter);
 
         SlideInUpAnimator animator = new SlideInUpAnimator(new OvershootInterpolator(1f));

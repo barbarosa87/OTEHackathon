@@ -1,8 +1,10 @@
 package hackathon.ote.gr.otehackathon.retrofit;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import hackathon.ote.gr.otehackathon.enumerators.ProcessStates;
 import hackathon.ote.gr.otehackathon.objects.CaseObj;
 import hackathon.ote.gr.otehackathon.objects.FormObj;
 import hackathon.ote.gr.otehackathon.objects.ProcessStatesObj;
@@ -48,15 +50,22 @@ public interface RetrofitInterface {
     );
 
     @GET("/WebServiceProject/startProcess")
-    Observable<ProcessStatesObj> startProcess(
+    Observable<List<ProcessStatesObj>> startProcess(
             @Query("token") String token,
             @Query("ProcessID") String ProcessID
     );
 
     @GET("/WebServiceProject/getForms")
-    Observable<FormObj> getForms(
+    Observable<List<FormObj>> getForms(
             @Query("token") String token,
             @Query("ProcessID") String ProcessID
+    );
+
+    @GET("/WebServiceProject/getForms")
+    Observable<List<ProcessStatesObj>> submitForms(
+            @Query("token") String token,
+            @Query("formID") String formID,
+            @Query("answer") String answer
     );
 
 }

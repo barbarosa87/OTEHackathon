@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity  implements SimpleDialog.OnD
             rotate.setDuration(800);
             rotate.setRepeatCount(Animation.INFINITE);
             logoImage.startAnimation(rotate);
-            startSession();
+            startSession(extras.getString("IDENTIFIER"));
             return true;
         }
         // ...
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity  implements SimpleDialog.OnD
 
     }
 
-    private void startSession() {
+    private void startSession(String CLI) {
 
 
         Observer<CaseObj> caseObjObserver = new Observer<CaseObj>() {
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity  implements SimpleDialog.OnD
 
             @Override
             public void onError(Throwable e) {
-
+                Toast.makeText(application, "ERROR STARTING CASE", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity  implements SimpleDialog.OnD
             }
         };
 
-        new RetrofitManager(caseObjObserver).startCase(HelperClass.getDemoCLI());
+        new RetrofitManager(caseObjObserver).startCase(CLI);
 
 
     }

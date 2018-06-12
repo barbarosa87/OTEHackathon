@@ -10,7 +10,7 @@ import android.os.Bundle;
 
 public class HelperClass {
 
-    private static final String API_URL = "http://192.168.1.15:8080/";
+    private static final String API_URL = "http://192.168.1.32:8080/";
     private static String demoCLI="2108136652";
 
     public static void startActivity(Context context, Class activity, Bundle bundle){
